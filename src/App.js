@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import CardList from './CardList';
 
-function App() {
+const App = () => {
+  const [cards, setCards] = useState([]);
+
+  const handleAddCard = () => {
+    const newCard = { content: `Card ${cards.length + 1}` };
+    setCards([...cards, newCard]);
+  };
+
+  const handleDeleteCard = (index) => {
+    setCards(cards.filter((_, i) => i !== index));
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <h1>React Card App</h1>
+      <button className="btn btn-primary" onClick={handleAddCard}>
+        Add Card
+      </button>
+      <CardList cards={cards} onDeleteCard={handleDeleteCard} />
     </div>
   );
-}
+};
 
 export default App;
