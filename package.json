@@ -13,9 +13,12 @@
     "three": "^0.151.3",
     "web-vitals": "^2.1.4"
   },
+  "homepage": "https://jamesdanielwhitford.github.io/3dSite",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -36,5 +39,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^5.0.0"
   }
 }
